@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>悦听player</title>
+		<link type="text/css" href="css/style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="play_wrap" id="player">
+				<div class="search_bar">
+					<div class="logo">
+						<img src="./img/player_title.png" />
+						<input type="text" v-model="qurey" @keyup.enter="SearchMusic"/>
+						<div class="search" @click="SearchMusic()"></div>
+					</div>
+				</div>
+				<div class="center_con">
+					<div class="song_wrap">
+						<ul class="song_list">
+							<li v-for="item in musicList">
+								<a href="#" @click="playMusic(item.id)"></a>
+								<b>{{item.name}}</b>
+								<span @click="playMv(item.mvid)" v-if="item.mvid!=0"></span>
+							</li>
+						</ul>
+						<img src="img/line02.png" class="line_left" />
+					</div>
+					<div class="player_con" :class="{playing:isplaying}">
+						<img src="img/player_bar.png" class="play_bar"/>
+						<img src="img/disc.png" class="disc autoRotate" />
+						<img :src="musicCover" class="cover" />
+					</div>
+					<div class="comment_wrap">
+						<h5>热门评论</h5>
+						<ul class="com_list">
+							<li v-for="item in comList">
+								<div class="Icon">
+									<img :src="item.user.avatarUrl" />
+								</div>
+								<!-- <img :src="item.user.avatarUrl" class="Icon"/> -->
+								<span>
+									<p>{{item.content}}</p>
+								</span>
+							</li>
+						</ul>
+						<img src="img/line01.png" class="line_right"/>
+					</div>
+				</div>
+				<div class="audio_con">
+					<audio  @pause="pause" @play="play" :src="musicUrl" controls="controls" loop="loop" autoplay="autoplay" class="myaudio"></audio>
+				</div>
+				<div class="music_mv" style="display: none;" v-show="isShow">
+					<video :src="mvUrl" controls="controls"></video>
+					<div class="mask" @click="hidden_mv"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- 官网提供的 axios 在线地址 -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

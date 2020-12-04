@@ -1,0 +1,248 @@
+/* 格式化样式 */
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+/* 主题 */
+.wrap {
+	position: fixed;
+	width:100%;
+	height:100%;
+	background: url(../img/bg.jpg) no-repeat;
+	background-size: 100% 100%;	
+}
+.play_wrap{
+	width: 800px;
+	height: 550px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+/* 搜素栏 */
+.search_bar{
+	position: relative;
+	height: 60px;
+	background-color: #1eacda;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	z-index: 20;
+}
+.logo{
+	padding-top: 17px;
+	margin-left: 30px;
+}
+.search_bar input{
+	position: absolute;
+	top: 12px;
+	right: 30px;
+	margin-bottom: 15px;
+	width: 300px;
+	height: 35px;
+	border-radius: 15px;
+	border: 0;
+	outline: none;
+	text-indent: 15px;
+	/* background: url(../img/zoom.png) 265px center no-repeat; */
+	background-color: rgba(255,255,255,0.5);
+}
+.search_bar .search{
+	position: absolute;
+	right: 45px;
+	top: 20px;
+	width: 20px;
+	height: 20px;
+	background: url(../img/zoom.png) no-repeat;
+	/* background-color: #1EACDA; */
+}
+/* 主体内容 */
+.center_con{
+	display: flex;
+	height: 440px;
+	background: rgba(255,255,255,0.5);
+}
+/* 左侧歌曲栏 */
+.song_wrap{
+	position: relative;
+	width: 200px;
+	height: 440px;
+}
+.song_list{
+	width: 100%;
+	height: 95%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 10px;
+	padding-left: 8px;
+}
+.song_list::-webkit-scrollbar{
+	display: none;
+}
+.song_list li{
+	width: 180px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+}
+.song_list li:nth-child(odd){
+	background: rgba(255,255,255,0.3);
+}
+.song_list li a{
+	display: block;
+	width: 17px;
+	height: 17px;
+	background-image: url(../img/play.png);
+	background-size: 100%;
+	margin: 0 10px;
+}
+.song_list li b{
+	width: 100px;
+	font-size: 14px;
+	font-weight: 400;
+}
+.song_list li span{
+	margin-left: 10px;
+	width: 23px;
+	height: 17px;
+	background: url(../img/table.png) left -48px no-repeat;
+}
+.song_wrap .line_left{
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+/* 中间播放栏 */
+.player_con{
+	position: relative;
+	float: left;
+	width: 400px;
+	height: 440px;
+}
+.play_bar{
+	position: absolute;
+	left: 200px;
+	top: -10px;
+	transform: rotate(-25deg);
+	transform-origin: 10% 10% 0;
+	transition: 1s;
+	z-index: 10;
+}
+.disc{
+	position: absolute;
+	top: 60px;
+	left: 70px;
+	z-index: 9;
+}
+@keyframes Rotate {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+.autoRotate{
+	animation-name: Rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-timing-function: linear;
+	animation-duration: 5s;
+}
+.cover{
+	position: absolute;
+	top: 115px;
+	left: 120px;
+	width: 150px;
+	height: 150px;
+	z-index: 8;
+	animation-name: Rotate;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-timing-function: linear;
+	animation-duration: 5s;
+}
+/* 动画开始 */
+.playing .play_bar{
+	transform: rotate(0);
+}
+.playing .autoRotate{
+	animation-play-state: running;
+}
+.playing .cover{
+	animation-play-state: running;
+}
+/* 右侧评论区 */
+.comment_wrap{
+	position: relative;
+	width: 200px;
+	height: 440px;
+}
+.comment_wrap h5{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.comment_wrap .com_list{
+	width: 100%;
+	height: 91%;
+	margin-left: 20px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.comment_wrap .com_list::-webkit-scrollbar{
+	display: none;
+}
+.comment_wrap .com_list li{
+	width: 180px;
+	margin-top: 20px;
+	display: flex;
+	align-items: flex-start;
+}
+.comment_wrap .com_list .Icon img{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+}
+.comment_wrap .com_list li span{
+	width: 110px;
+	margin-left: 10px;
+	font-size: 12px;
+}
+.comment_wrap .com_list li span p{
+	margin-top: 10px;
+} 
+.line_right{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/* 状态栏 */
+.audio_con{
+	height: 50px;
+}
+.myaudio{
+	width: 800px;
+	height: 50px;
+	outline: none;
+	background-color: #f1f3f4;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+/* 播放mv */
+.music_mv video{
+	position: fixed;
+	width: 800px;
+	height: 500px;
+	margin-top: -520px;
+	z-index: 100;
+}
+.music_mv .mask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 99;
+}
